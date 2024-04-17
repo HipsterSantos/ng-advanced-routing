@@ -4,10 +4,10 @@ import { ServersService } from './servers.service';
 @Component({
   selector: 'app-servers',
   templateUrl: './servers.component.html',
-  styleUrls: ['./servers.component.css']
+  styleUrls: ['./servers.component.scss']
 })
 export class ServersComponent implements OnInit {
-  private servers: {id: number, name: string, status: string}[] = [];
+  servers: {id: number, name: string, status: string}[] = [];
 
   constructor(private serversService: ServersService) { }
 

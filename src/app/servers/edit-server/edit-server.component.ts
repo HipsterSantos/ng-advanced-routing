@@ -5,7 +5,7 @@ import { ServersService } from '../servers.service';
 @Component({
   selector: 'app-edit-server',
   templateUrl: './edit-server.component.html',
-  styleUrls: ['./edit-server.component.css']
+  styleUrls: ['./edit-server.component.scss']
 })
 export class EditServerComponent implements OnInit {
   server!: {id: number, name: string, status: string};
