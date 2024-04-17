@@ -19,6 +19,10 @@ const routes: Routes = [
     path:'user'
   },
   {
+    path:'users/:id/:name',
+    component: UserComponent
+  },
+  {
     component: ServersComponent,
     path:'server'
   },

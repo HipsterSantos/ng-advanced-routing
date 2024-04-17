@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationStart, Params, Router } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-user',
@@ -8,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 export class UserComponent implements OnInit {
   user!: {id: number, name: string};
 
-  constructor() { }
+  constructor(private route:Router, private activeRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.user = { 
+      id:this.activeRoute.snapshot.params['id'],
+      name:this.activeRoute.snapshot.params['name']
+    }
+    this.activeRoute.params.subscribe((params: Params)=>{
+      this.user.id = params['id']
+      this.user.name = params['name']
+    })
+      // this.route.events.pipe(filter( (e)=> {
+      //   if(e instanceof NavigationStart){
+      //     console.log('navigation started')
+      //   }
+      // }))
   }
 
 }
