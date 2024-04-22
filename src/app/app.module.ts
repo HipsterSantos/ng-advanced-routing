@@ -16,20 +16,37 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     component: UsersComponent,
-    path:'user'
-  },
-  {
-    path:'users/:id/:name',
-    component: UserComponent
+    path:'user',
+    children: [
+      {
+        path:'users/:id/:name',
+        component: UserComponent
+      }  
+    ]
   },
   {
     component: ServersComponent,
-    path:'server'
+    path:'server',
+    children:[
+      {
+        component: EditServerComponent,
+        path: ':id/edit'
+      },
+      {
+        component: ServerComponent,
+        path: ':id'
+      }
+    ]
   },
+  
   {
     component: HomeComponent,
     path:''
-  }
+  },
+  {
+    path: '404'
+  },
+  {path: '**', redirectTo: '/404'}
 ]
 @NgModule({
   declarations: [

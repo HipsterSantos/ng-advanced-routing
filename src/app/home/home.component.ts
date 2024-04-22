@@ -12,9 +12,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
   }
-  loadServer(){
-    this.route.navigate(['server'],{relativeTo: this.activeRoute})
-    // this.activeRoute.
+  loadServer(id: number){
+    this.route.navigate(['server',id,'edit'],{queryParams:{allowEdit: '1'},fragment:'loading',relativeTo: this.activeRoute})
+    console.log('query params = ',this.activeRoute.snapshot.queryParamMap)
+    console.log('fragments = ',this.activeRoute.snapshot.fragment)
   }
 
 }

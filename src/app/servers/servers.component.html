@@ -4,15 +4,15 @@
         <a
           href="#"
           class="list-group-item"
-          *ngFor="let server of servers">
+          *ngFor="let server of servers; let i = index"
+          [routerLink]="['/server',i]"
+          >
           {{ server.name }}
         </a>
       </div>
     </div>
     <div class="col-xs-12 col-sm-4">
-      <app-edit-server></app-edit-server>
-      <hr>
-      <app-server></app-server>
+      <router-outlet></router-outlet>
     </div>
   </div>
   
