@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ServersService } from '../servers.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-server',
@@ -13,12 +13,17 @@ export class EditServerComponent implements OnInit {
   serverName = '';
   serverStatus = '';
 
-  constructor(private serversService: ServersService,private activeRoute: ActivatedRoute) { }
+  constructor(private route:Router, private serversService: ServersService,private activeRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.server = this.serversService.getServer(+this.activeRoute.snapshot.params['id'])!;
     this.serverName = this.server.name;
     this.serverStatus = this.server.status;
+    this.activeRoute.params.subscribe((params: Params)=>{
+      if (params['id'] > this.serversService.getServers().length){
+        this.route.navigate(['/notfound'])
+      }
+    })
   }
 
   onUpdateServer() {

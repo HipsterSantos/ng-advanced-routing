@@ -12,14 +12,17 @@ import { EditServerComponent } from './servers/edit-server/edit-server.component
 import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
 import { RouterModule, Routes } from '@angular/router';
+import { NotFoundError } from 'rxjs';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { PipeIncrement } from './servers/increment.pipe';
 
 const routes: Routes = [
   {
     component: UsersComponent,
-    path:'user',
+    path:'users',
     children: [
       {
-        path:'users/:id/:name',
+        path:':id/:name',
         component: UserComponent
       }  
     ]
@@ -44,9 +47,16 @@ const routes: Routes = [
     path:''
   },
   {
-    path: '404'
+    path: '404',component: NotfoundComponent
   },
   {path: '**', redirectTo: '/404'}
+]
+
+const routesTest: Routes = [
+  {
+    component: EditServerComponent,
+    path: 'servers/:id/edit'
+  }
 ]
 @NgModule({
   declarations: [
@@ -56,7 +66,8 @@ const routes: Routes = [
     ServersComponent,
     UserComponent,
     EditServerComponent,
-    ServerComponent
+    ServerComponent,
+    PipeIncrement
   ],
   imports: [
     BrowserModule,

@@ -13,6 +13,7 @@ export class UserComponent implements OnInit, OnDestroy {
   constructor(private route:Router, private activeRoute: ActivatedRoute) { }
 
   ngOnInit() {
+
     this.user = { 
       id:this.activeRoute.snapshot.params['id'],
       name:this.activeRoute.snapshot.params['name']
@@ -21,6 +22,7 @@ export class UserComponent implements OnInit, OnDestroy {
       this.user.id = params['id']
       this.user.name = params['name']
     })
+    
       // this.route.events.pipe(filter( (e)=> {
       //   if(e instanceof NavigationStart){
       //     console.log('navigation started')

@@ -5,10 +5,12 @@
           href="#"
           class="list-group-item"
           *ngFor="let server of servers; let i = index"
-          [routerLink]="['/server',i]"
+          [routerLink]="['/server', i | increment]"
           >
           {{ server.name }}
         </a>
+        <a [routerLink]="['/server',4,'edit']"
+        [queryParams]="{allowEdit: 1, mode:2}"> testing route</a>
       </div>
     </div>
     <div class="col-xs-12 col-sm-4">
