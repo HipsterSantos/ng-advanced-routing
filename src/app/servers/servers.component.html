@@ -6,6 +6,7 @@
           class="list-group-item"
           *ngFor="let server of servers; let i = index"
           [routerLink]="['/server', i | increment]"
+          [queryParams]="{allowEdit: i % 2 == 1}"
           >
           {{ server.name }}
         </a>
